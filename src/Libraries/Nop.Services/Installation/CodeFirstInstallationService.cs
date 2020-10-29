@@ -3073,7 +3073,8 @@ namespace Nop.Services.Installation
                 UseAjaxLoadMenu = false,
                 UseAjaxCatalogProductsLoading = true,
                 EnableManufacturerFiltering = true,
-                EnablePriceRangeFiltering = true
+                EnablePriceRangeFiltering = true,
+                AttributeValueOutOfStockDisplayType = AttributeValueOutOfStockDisplayType.AlwaysDisplay
             });
 
             await settingService.SaveSettingAsync(new LocalizationSettings
