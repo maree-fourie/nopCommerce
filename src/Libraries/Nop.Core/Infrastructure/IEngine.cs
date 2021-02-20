@@ -27,34 +27,20 @@ namespace Nop.Core.Infrastructure
         void ConfigureRequestPipeline(IApplicationBuilder application);
 
         /// <summary>
-        /// Resolve dependency in isolated scope
-        /// </summary>
-        /// <param name="scope">Scope</param>
-        /// <typeparam name="T">Type of resolved service</typeparam>
-        /// <returns>Resolved service</returns>
-        T Resolve<T>(IServiceScope scope) where T : class;
-
-        /// <summary>
-        /// Resolve dependency in isolated scope
-        /// </summary>
-        /// <param name="type">Type of resolved service</param>
-        /// <param name="scope">Scope</param>
-        /// <returns>Resolved service</returns>
-        object Resolve(Type type, IServiceScope scope);
-
-        /// <summary>
         /// Resolve dependency
         /// </summary>
+        /// <param name="scope">Scope</param>
         /// <typeparam name="T">Type of resolved service</typeparam>
         /// <returns>Resolved service</returns>
-        T Resolve<T>() where T : class;
+        T Resolve<T>(IServiceScope scope = null) where T : class;
 
         /// <summary>
         /// Resolve dependency
         /// </summary>
         /// <param name="type">Type of resolved service</param>
+        /// <param name="scope">Scope</param>
         /// <returns>Resolved service</returns>
-        object Resolve(Type type);
+        object Resolve(Type type, IServiceScope scope = null);
 
         /// <summary>
         /// Resolve dependencies

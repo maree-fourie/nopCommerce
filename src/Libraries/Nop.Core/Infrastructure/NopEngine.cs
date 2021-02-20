@@ -184,46 +184,26 @@ namespace Nop.Core.Infrastructure
         }
 
         /// <summary>
-        /// Resolve dependency in isolated scope
+        /// Resolve dependency
         /// </summary>
         /// <param name="scope">Scope</param>
         /// <typeparam name="T">Type of resolved service</typeparam>
         /// <returns>Resolved service</returns>
-        public T Resolve<T>(IServiceScope scope) where T : class
+        public T Resolve<T>(IServiceScope scope = null) where T : class
         {
             return (T)Resolve(typeof(T), scope);
         }
 
         /// <summary>
-        /// Resolve dependency in isolated scope
+        /// Resolve dependency
         /// </summary>
         /// <param name="type">Type of resolved service</param>
         /// <param name="scope">Scope</param>
         /// <returns>Resolved service</returns>
-        public object Resolve(Type type, IServiceScope scope)
+        public object Resolve(Type type, IServiceScope scope = null)
         {
             return GetServiceProvider(scope)?.GetService(type);
-        }
-
-        /// <summary>
-        /// Resolve dependency
-        /// </summary>
-        /// <typeparam name="T">Type of resolved service</typeparam>
-        /// <returns>Resolved service</returns>
-        public T Resolve<T>() where T : class
-        {
-            return (T)Resolve(typeof(T));
-        }
-
-        /// <summary>
-        /// Resolve dependency
-        /// </summary>
-        /// <param name="type">Type of resolved service</param>
-        /// <returns>Resolved service</returns>
-        public object Resolve(Type type)
-        {
-            return GetServiceProvider()?.GetService(type);
-        }
+        }        
 
         /// <summary>
         /// Resolve dependencies
