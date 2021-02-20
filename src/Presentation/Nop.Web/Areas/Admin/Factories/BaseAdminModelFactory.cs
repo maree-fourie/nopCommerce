@@ -379,6 +379,9 @@ namespace Nop.Web.Areas.Admin.Factories
 
             //prepare custom address attributes
             await _addressAttributeModelFactory.PrepareCustomAddressAttributesAsync(model.CustomAddressAttributes, address);
+            
+            if (address == null)
+                return;
 
             model.FormattedCustomAddressAttributes = await _addressAttributeFormatter.FormatAttributesAsync(address.CustomAttributes);
         }

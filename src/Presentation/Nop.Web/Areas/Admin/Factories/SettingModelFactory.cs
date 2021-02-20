@@ -34,6 +34,7 @@ using Nop.Services.Media;
 using Nop.Services.Stores;
 using Nop.Services.Themes;
 using Nop.Web.Areas.Admin.Infrastructure.Mapper.Extensions;
+using Nop.Web.Areas.Admin.Models.Common;
 using Nop.Web.Areas.Admin.Models.Settings;
 using Nop.Web.Areas.Admin.Models.Stores;
 using Nop.Web.Framework.Factories;
@@ -185,6 +186,22 @@ namespace Nop.Web.Areas.Admin.Factories
             searchModel.SetGridPageSize();
 
             return Task.FromResult(searchModel);
+        }
+
+        /// <summary>
+        /// Prepare required address fields with data by default
+        /// </summary>
+        /// <param name="model"></param>
+        protected virtual void PrepareRequiredFieldsWithDefaultsData(AddressModel model)
+        {
+            if (string.IsNullOrEmpty(model.FirstName))
+                model.FirstName = AddressDefaults.FirstName;
+
+            if (string.IsNullOrEmpty(model.LastName))
+                model.LastName = AddressDefaults.LastName;
+
+            if (string.IsNullOrEmpty(model.Email))
+                model.Email = AddressDefaults.Email;
         }
 
         /// <summary>
@@ -925,6 +942,8 @@ namespace Nop.Web.Areas.Admin.Factories
                 model.ShippingOriginAddress = originAddress.ToModel(model.ShippingOriginAddress);
             await _baseAdminModelFactory.PrepareAddressModelAsync(model.ShippingOriginAddress, originAddress);
 
+            PrepareRequiredFieldsWithDefaultsData(model.ShippingOriginAddress);
+
             return model;
         }
 
@@ -986,6 +1005,7 @@ namespace Nop.Web.Areas.Admin.Factories
             if (defaultAddress != null)
                 model.DefaultTaxAddress = defaultAddress.ToModel(model.DefaultTaxAddress);
             await _baseAdminModelFactory.PrepareAddressModelAsync(model.DefaultTaxAddress, defaultAddress);
+            PrepareRequiredFieldsWithDefaultsData(model.DefaultTaxAddress);
 
             return model;
         }
