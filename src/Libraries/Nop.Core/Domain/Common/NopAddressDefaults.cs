@@ -3,7 +3,7 @@
     /// <summary>
     /// Represents default values related to address data
     /// </summary>
-    public static partial class AddressDefaults
+    public static partial class NopAddressDefaults
     {
         /// <summary>
         /// Gets a default first name
@@ -18,6 +18,6 @@
         /// <summary>
         /// Gets a default email
         /// </summary>
-        public static string Email => "default@email.com";
+        public static string Email => "default@yourStore.com";
     }
 }

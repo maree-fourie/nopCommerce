@@ -195,13 +195,13 @@ namespace Nop.Web.Areas.Admin.Factories
         protected virtual void PrepareRequiredFieldsWithDefaultsData(AddressModel model)
         {
             if (string.IsNullOrEmpty(model.FirstName))
-                model.FirstName = AddressDefaults.FirstName;
+                model.FirstName = NopAddressDefaults.FirstName;
 
             if (string.IsNullOrEmpty(model.LastName))
-                model.LastName = AddressDefaults.LastName;
+                model.LastName = NopAddressDefaults.LastName;
 
             if (string.IsNullOrEmpty(model.Email))
-                model.Email = AddressDefaults.Email;
+                model.Email = NopAddressDefaults.Email;
         }
 
         /// <summary>
